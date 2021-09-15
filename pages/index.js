@@ -23,7 +23,7 @@ export default function Home({ results }) {
 
 export async function getServerSideProps(context) {
   const gener = context.query.geners;
-  const request = await fetch(`https://api.themoviedb.org/3${requests[gener]?.url}`).then((res) => res.json())
+  const request = await fetch(`https://api.themoviedb.org/3${requests[gener]?.url || requests.fetchTrending.url}`).then((res) => res.json())
   return {
     props: {
       results: request.results
